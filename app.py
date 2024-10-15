@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 import os
 
@@ -7,6 +7,7 @@ app = Flask(__name__, template_folder='templates')
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:postgres@dev-postgres:5432/books"
 db = SQLAlchemy(app)
+
 background_color = os.environ.get('BACKGROUND_COLOR');
 
 # Books Database Example CRUD Operations 

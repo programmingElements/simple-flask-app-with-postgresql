@@ -79,3 +79,80 @@
 
   if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5001, debug=True)
+
+
+
+
+   
+==============================================
+   Dockerizing a real-world web application
+==============================================
+
+1. Download the postgresql docker image from docker registry 
+
+$ docker image pull postgres
+
+2. Create a docker volume
+
+$ docker volume --help
+$ docker volume create pgdata
+$ docker volume ls
+
+3. Create a docker network
+
+$ docker network --help
+$ docker network create library-network
+$ docker network ls
+
+4. Run the Database docker image
+
+$ docker container --help
+
+$ docker container run --rm --name=dev-postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=books -v pgdata:/var/lib/postgresql/data --network=library-network postgres
+
+$ docker container ls 
+
+$ docker container ls -a
+
+5. Build the Flask App with Postgresql DB [simple-flask-application-with-postgresql]
+
+$ docker image build -t library-app:1.0 .
+
+6. Run the Docker Container using Docker Image [library-app:1.0]
+
+$ docker container run --rm -p 5000:5000 --network=library-network library-app:1.0
+
+7. Go to the Docker Postgresql DB Container using interative mode execute some commands
+
+$ docker exec -it <container-id/container-name> /bin/bash
+
+$ docker exec -it 2aff1f2b2a3c /bin/bash
+
+  root@2aff1f2b2a3c:/app# python
+
+  >> from app import db
+
+  >> db.create_all()
+
+  >> exit()
+
+  root@2aff1f2b2a3c:/app# exit
+  exit
+
+$
+
+8. Run the application in web browser using ip-address and port number
+
+   http://localhost:5000/
+
+9. To the stop the docker containers
+
+   $ docker container stop 2aff1f2b2a3c
+
+   $ docker container stop dev-postgres
+
+
+10. Again the run the docker containers of postgresql and library-app.
+
+
+    Note: Test the app existing books are present or not.

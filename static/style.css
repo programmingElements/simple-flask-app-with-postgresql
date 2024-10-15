@@ -1,0 +1,43 @@
+#main-header {
+  background-color: rgb(214, 165, 18);
+  color: white;
+  padding: 10px;
+  font-size: larger;
+  text-align: center;
+}
+
+#root {
+  background-color: rgb(104, 104, 229);
+  padding: 10px;
+  color: white;
+}
+
+#root h1 {
+  color: red;
+}
+
+#root p {
+  color: aqua;
+  font-size: larger;
+}
+
+a {
+  background-color: rgb(44, 175, 7);
+  color: coral;
+  padding: 10px;
+  position: relative;
+  top: 20px;
+  text-decoration: none;
+  font-size: large;
+}
+
+#home-content {
+  background-color: rgb(21, 123, 211);
+  color: white;
+  padding: 10px;
+}
+
+#home-filter {
+  background-color: rgb(8, 215, 94);
+  padding: 10px 20px;
+}
